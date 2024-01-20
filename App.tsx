@@ -1,16 +1,31 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Button from "./src/components/button";
 
 export default function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View style={{ width: 50, height: 50, backgroundColor: "red" }} />
-        <View style={{ width: 100, height: 100, backgroundColor: "blue" }} />
-        <View style={{ width: 150, height: 150, backgroundColor: "green" }} />
-        <View style={{ width: 200, height: 200, backgroundColor: "yellow" }} />
-        <View style={{ width: 250, height: 250, backgroundColor: "orange" }} />
-        <View style={{ width: 300, height: 300, backgroundColor: "pink" }} />
+        <Text>Count : {count}</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            gap: 10,
+          }}
+        >
+          <Button name="-" onPressChange={() => setCount(count - 1)} />
+          <Button name="+" onPressChange={() => setCount(count + 1)} />
+        </View>
       </View>
       {/* <StatusBar style="auto" /> */}
     </ScrollView>
